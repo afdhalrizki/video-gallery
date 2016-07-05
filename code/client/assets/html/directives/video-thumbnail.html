@@ -1,0 +1,29 @@
+<div class="thumbnail">
+    <videogular vg-theme="v.theme" vg-player-ready="onPlayerReady({API: $API, index: index})" vg-update-state="onUpdateState({state:$state, index:index})">
+        <vg-media vg-src="v.url">
+        </vg-media>
+        <vg-controls>
+            <vg-play-pause-button></vg-play-pause-button>
+            <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+            <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+            </vg-scrub-bar>
+            <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+            <vg-volume>
+                <vg-mute-button></vg-mute-button>
+                <vg-volume-bar></vg-volume-bar>
+            </vg-volume>
+            <vg-fullscreen-button></vg-fullscreen-button>
+        </vg-controls>
+        <vg-overlay-play></vg-overlay-play>
+    </videogular>
+    <div class="ratings-stars">
+        <i class="fa fa-star fa-2x" aria-hidden="true" ng-repeat="t in ratingStars(v.ratings, 1) track by $index"></i>
+        <i class="fa fa-star-o fa-2x" aria-hidden="true" ng-repeat="t in ratingStars(v.ratings) track by $index"></i>
+        <span>({{v.ratings.length}})</span>
+    </div>
+    <div class="caption">
+        <a ui-sref="content.videos.detail({videoId: v._id})"><h3>{{v.name}}</h3></a>
+        <p class="giveMeEllipsis">{{v.description}}</p>
+    </div>
+</div>

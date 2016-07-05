@@ -1,0 +1,12 @@
+<div ng-init="ctrVideoList.init()">
+    <div style="margin:auto; width: 40px;" ng-if="ctrVideoList.reading">
+        <i class="fa fa-spinner fa-5x fa-pulse"></i>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6  col-md-6 col-lg-3 slide-left video-list" ng-repeat="video in videos">
+            <video-thumbnail v="video", index="{{$index}}", on-player-ready="onPlayerReady(API, index)", on-update-state="onUpdateState(state, index)"></video-thumbnail>
+        </div>
+    </div>
+    <div infinite-scroll="loadMoreVideos()" infinite-scroll-distance="0" infinite-scroll-disabled="ctrVideoList.reading" style="{'padding-top':'10000px'}"></div>  
+</div>
